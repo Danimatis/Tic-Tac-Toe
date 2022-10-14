@@ -1,10 +1,13 @@
 let turnX = true;
 let x = [];
 let o = [];
+let xWins = 0;
+let oWins = 0;
 // let winningNumbers = ["123", "456", "789", "159", "357", "147", "258", "369"];
 const body = document.getElementById("body");
 const tictactoe = document.getElementById("tictactoe");
 const winner = document.getElementById("winner");
+const tali = document.getElementById("tali");
 const boxes = document.querySelectorAll(`.box`);
 function findClick(e) {
   let target = e.target.closest("div[data-id]");
@@ -18,6 +21,7 @@ function reset() {
   winner.innerHTML = "";
   x = [];
   o = [];
+  turnX = true;
 }
 function preventSwitchingLetter() {}
 function checkWinner() {
@@ -47,8 +51,9 @@ function checkWinner() {
       x.sort().join("").toString().includes("6") &&
       x.sort().join("").toString().includes("9"))
   ) {
-    winner.innerHTML = `<h1>X is The Winner</h> 
-    <button>Reset</button>`;
+    winner.innerHTML = `<h1 class="mb-3">X is The Winner!!!</h1> 
+    `;
+    xWins++;
     return true;
   }
   if (
@@ -77,18 +82,37 @@ function checkWinner() {
       o.sort().join("").toString().includes("6") &&
       o.sort().join("").toString().includes("9"))
   ) {
-    winner.innerHTML = `<h1>O is The Winner</h> 
-    <button>Reset</button>
+    winner.innerHTML = `<h1 class="mb-3">O is The Winner!!!</h1> 
     `;
+    oWins++;
     return true;
   }
 }
-// function checkWinner(){
-//     for (const i=1; i<10; 1++){
-
-//         for(const j=2;j<10;j++){}
-//     }
+// function setTali() {
+//   tali.innerHTML = `<h1>X Won ${xWins} Time(s) </h1>
+//   <h1>O Won ${oWins} Time(s)</h1>`;
 // }
+function renderPage() {
+  tali.innerHTML = `<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5  id="exampleModalLabel">Scores</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <h3>X Won ${xWins} Time(s) </h3>
+      <h3>O Won ${oWins} Time(s)</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      
+      </div>
+    </div>
+  </div>
+</div>`;
+}
+function showScores() {}
 function write(e) {
   let square = findClick(e);
   if (turnX) {
@@ -106,11 +130,13 @@ tictactoe.addEventListener("click", function (e) {
   } else {
     write(e);
     checkWinner();
+    renderPage();
   }
 });
 console.log(boxes);
 body.addEventListener("click", function (e) {
-  if (e.target.closest("button")) {
+  if (e.target.closest("#reset")) {
     reset();
   }
 });
+renderPage();

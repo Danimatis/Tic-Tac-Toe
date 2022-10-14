@@ -46,3 +46,6 @@ img {
 h1 {
   font-size: 100px !important;
 }
+#scoring {
+  width: 250px !important;
+}
