@@ -2,7 +2,8 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  height: 550px;
+  height: 400px;
+  width: 400px;
 }
 
 #tictactoe :nth-child(2) {
@@ -39,6 +40,9 @@
   align-items: center;
 }
 img {
-  height: 150px;
-  width: 150px;
+  height: 130px;
+  width: 130px;
+}
+h1 {
+  font-size: 100px !important;
 }
