@@ -1,0 +1,44 @@
+#tictactoe {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  height: 550px;
+}
+
+#tictactoe :nth-child(2) {
+  border-style: solid;
+  border-top: white;
+  border-bottom: white;
+}
+
+#tictactoe :nth-child(4) {
+  border-style: solid;
+  border-left: white;
+  border-right: white;
+}
+
+#tictactoe :nth-child(5) {
+  border-style: solid;
+}
+
+#tictactoe :nth-child(6) {
+  border-style: solid;
+  border-right: white;
+  border-left: white;
+}
+
+#tictactoe :nth-child(8) {
+  border-style: solid;
+  border-bottom: white;
+  border-top: white;
+}
+.box {
+  display: flex;
+  font-size: 50px;
+  justify-content: center;
+  align-items: center;
+}
+img {
+  height: 150px;
+  width: 150px;
+}
