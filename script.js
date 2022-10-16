@@ -23,6 +23,22 @@ function reset() {
   o = [];
   turnX = true;
 }
+function undoPosition(player, position) {
+  if (player === x) {
+    x = player.filter((spot) => spot !== position.dataset.id);
+    console.log(x);
+    undo(position);
+  }
+  if (player === o) {
+    o = player.filter((spot) => spot !== position.dataset.id);
+    console.log(o);
+    undo(position);
+  }
+}
+function undo(position) {
+  position.innerHTML = "";
+  turnX = !turnX;
+}
 function preventSwitchingLetter() {}
 function checkWinner() {
   if (
@@ -118,14 +134,21 @@ function write(e) {
   if (turnX) {
     square.innerHTML = `<img src="./images/x-png-35393.png" alt="">`;
     assignPosition(x, square);
+    console.log(x);
   } else {
     square.innerHTML = `<img src="./images/letter-o-icon-png-20910.png" alt="">`;
     assignPosition(o, square);
+    console.log(o);
   }
   turnX = !turnX;
 }
 tictactoe.addEventListener("click", function (e) {
   if (e.target.closest("img")) {
+    if (turnX) {
+      undoPosition(o, e.target.closest("div.box"));
+    } else {
+      undoPosition(x, e.target.closest("div.box"));
+    }
     return;
   } else {
     write(e);
