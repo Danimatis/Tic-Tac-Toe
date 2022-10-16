@@ -3,6 +3,7 @@ let x = [];
 let o = [];
 let xWins = 0;
 let oWins = 0;
+// let endOfGame = false;
 // let winningNumbers = ["123", "456", "789", "159", "357", "147", "258", "369"];
 const body = document.getElementById("body");
 const tictactoe = document.getElementById("tictactoe");
@@ -143,6 +144,9 @@ function write(e) {
   turnX = !turnX;
 }
 tictactoe.addEventListener("click", function (e) {
+  if (checkWinner()) {
+    return;
+  }
   if (e.target.closest("img")) {
     if (turnX) {
       undoPosition(o, e.target.closest("div.box"));
