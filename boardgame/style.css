@@ -1,0 +1,81 @@
+#board {
+  height: 100vh; /*just for editing i need to see the whole board*/
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 2fr repeat(9, 1fr) 2fr;
+  grid-template-rows: 2fr repeat(9, 1fr) 2fr;
+  background-color: grey;
+}
+#center {
+  display: grid;
+  grid-column: 2/11;
+  grid-row: 2/11;
+  background-color: white;
+}
+#column-right {
+  display: flex;
+  flex-direction: column;
+  grid-column: 11;
+  grid-row: 2/11;
+}
+#column-left {
+  display: flex;
+  flex-direction: column-reverse;
+  grid-column: 1;
+  grid-row: 2/11;
+}
+#row-top {
+  display: flex;
+
+  grid-column: 2/11;
+  grid-row: 1;
+}
+#row-bottom {
+  display: flex;
+  flex-direction: row-reverse;
+  grid-column: 2/11;
+  grid-row: 11;
+}
+#corner-left-top {
+  grid-column: 1;
+  grid-row: 1;
+}
+#corner-left-bottom {
+  grid-column: 1;
+  grid-row: 11;
+}
+#corner-right-top {
+  grid-column: 11;
+  grid-row: 1;
+}
+#corner-right-bottom {
+  grid-column: 11;
+  grid-row: 11;
+}
+#row-top > div {
+  flex: auto;
+}
+#row-bottom > div {
+  flex: auto;
+}
+#column-left > div {
+  flex: auto;
+}
+#column-right > div {
+  flex: auto;
+}
+div {
+  height: 1fr;
+  border: solid 2px black;
+}
+.active-players {
+  height: 50px;
+  width: 50px;
+}
+.display-of-ongoing-events > img {
+  height: 100px;
+  width: 100px;
+}
+body {
+  text-transform: capitalize;
+}
